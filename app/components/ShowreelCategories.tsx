@@ -1,20 +1,20 @@
 const categories = [
-  {
-    name: "Lyrics Videos",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Cinematic Edits",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-3.75.125v-.375c0-.621.504-1.125 1.125-1.125h17.25c.621 0 1.125.504 1.125 1.125v.375M12 6v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-  },
+  // {
+  //   name: "Lyrics Videos",
+  //   icon: (
+  //     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+  //       <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
+  //     </svg>
+  //   ),
+  // },
+  // {
+  //   name: "Cinematic Edits",
+  //   icon: (
+  //     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+  //       <path strokeLinecap="round" strokeLinejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 18.996 6 18.375m-3.75.125v-.375c0-.621.504-1.125 1.125-1.125h17.25c.621 0 1.125.504 1.125 1.125v.375M12 6v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+  //     </svg>
+  //   ),
+  // },
   {
     name: "Motion Graphics",
     icon: (
@@ -40,30 +40,28 @@ const categories = [
     ),
   },
   {
-    name: "Reels / Shorts",
+    name: "Faceless Edits",
     icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-      </svg>
+      <img src="/icons8-question-mark-48.png" alt="Faceless Edits" className="w-6 h-6 object-contain" />
     ),
   },
-  {
-    name: "Gaming Edits",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6 12h4m-2-2v4m8.5-.5a.5.5 0 11-1 0 .5.5 0 011 0zm2.5 0a.5.5 0 11-1 0 .5.5 0 011 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2 10.5C2 8.015 4.015 6 6.5 6h11C19.985 6 22 8.015 22 10.5v3C22 15.985 19.985 18 17.5 18h-11C4.015 18 2 15.985 2 13.5v-3z" />
-      </svg>
-    ),
-  },
-  {
-    name: "Podcast Edits",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
-      </svg>
-    ),
-  },
+  // {
+  //   name: "Gaming Edits",
+  //   icon: (
+  //     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+  //       <path strokeLinecap="round" strokeLinejoin="round" d="M6 12h4m-2-2v4m8.5-.5a.5.5 0 11-1 0 .5.5 0 011 0zm2.5 0a.5.5 0 11-1 0 .5.5 0 011 0z" />
+  //       <path strokeLinecap="round" strokeLinejoin="round" d="M2 10.5C2 8.015 4.015 6 6.5 6h11C19.985 6 22 8.015 22 10.5v3C22 15.985 19.985 18 17.5 18h-11C4.015 18 2 15.985 2 13.5v-3z" />
+  //     </svg>
+  //   ),
+  // },
+  // {
+  //   name: "Podcast Edits",
+  //   icon: (
+  //     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+  //       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+  //     </svg>
+  //   ),
+  // },
 ];
 
 function SectionHeader({ title }: { title: string }) {
