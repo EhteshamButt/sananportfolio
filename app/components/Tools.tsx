@@ -93,7 +93,7 @@ const tools: Tool[] = [
 
 export default function Tools() {
   return (
-    <section id="tools" className="py-20 bg-[#05050f]">
+    <section id="tools" className="py-10 bg-[#05050f]">
       {/* Divider top */}
       <div className="w-full h-px bg-gradient-to-r from-transparent via-[#1e1e3a] to-transparent mb-0" />
 

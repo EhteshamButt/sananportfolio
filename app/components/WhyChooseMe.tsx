@@ -57,7 +57,7 @@ const features = [
 
 export default function WhyChooseMe() {
   return (
-    <section id="about" className="py-20 bg-[#05050f]">
+    <section id="about" className="py-10 bg-[#05050f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section header */}
         <div className="flex items-center justify-center gap-4 mb-12">

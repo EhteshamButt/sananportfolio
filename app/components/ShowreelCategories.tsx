@@ -78,7 +78,7 @@ function SectionHeader({ title }: { title: string }) {
 
 export default function ShowreelCategories() {
   return (
-    <section id="showreel" className="py-20 bg-[#05050f]">
+    <section id="showreel" className="py-10 bg-[#05050f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-10">
           {/* ── Left: Showreel ── */}
