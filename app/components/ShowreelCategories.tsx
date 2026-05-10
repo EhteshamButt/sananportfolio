@@ -1,3 +1,10 @@
+"use client";
+import { useState } from "react";
+
+const DRIVE_ID = "1t5xpYEt7mvOGQ6FUXJJcxEYsONjOzra3";
+const EMBED_URL = `https://drive.google.com/file/d/${DRIVE_ID}/preview`;
+const THUMB_URL = `https://drive.google.com/thumbnail?id=${DRIVE_ID}&sz=w1280`;
+
 const categories = [
   // {
   //   name: "Lyrics Videos",
@@ -77,6 +84,8 @@ function SectionHeader({ title }: { title: string }) {
 }
 
 export default function ShowreelCategories() {
+  const [playing, setPlaying] = useState(false);
+
   return (
     <section id="showreel" className="py-10 bg-[#05050f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
@@ -85,45 +94,58 @@ export default function ShowreelCategories() {
           <div className="w-full lg:w-[44%]">
             <SectionHeader title="MY SHOWREEL" />
 
-            {/* Video player mockup */}
-            <div className="relative rounded-2xl overflow-hidden border border-[#1e1e3a] bg-[#0d0d1a] aspect-video group cursor-pointer">
-              {/* Gradient thumbnail */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-[#080815] to-blue-900/40" />
-              {/* Warm horizon accent */}
-              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-orange-900/20 to-transparent" />
-
-              {/* Play button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/25 flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
-                  <svg
-                    className="w-7 h-7 text-white ml-1"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Bottom bar */}
-              <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm px-4 py-2.5 flex items-center justify-between">
-                <span className="text-white/80 text-xs font-medium truncate">
-                  Sannan Renderz — Showreel 2024
-                </span>
-                <svg
-                  className="w-4 h-4 text-white/50 flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+            {/* Video player */}
+            <div className="relative rounded-2xl overflow-hidden border border-[#1e1e3a] bg-[#0d0d1a] aspect-video group shadow-[0_0_40px_rgba(139,92,246,0.15)]">
+              {playing ? (
+                <iframe
+                  src={`${EMBED_URL}?autoplay=1`}
+                  className="absolute inset-0 w-full h-full"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                />
+              ) : (
+                <>
+                  {/* Thumbnail */}
+                  <img
+                    src={THUMB_URL}
+                    alt="Showreel thumbnail"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.display = "none";
+                    }}
                   />
-                </svg>
-              </div>
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-black/40" />
+                  {/* Gradient accent */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-transparent to-blue-900/20" />
+
+                  {/* Play button */}
+                  <button
+                    onClick={() => setPlaying(true)}
+                    className="absolute inset-0 flex items-center justify-center group/btn"
+                    aria-label="Play showreel"
+                  >
+                    <div className="w-18 h-18 w-16 h-16 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 flex items-center justify-center group-hover/btn:bg-white/25 group-hover/btn:scale-110 group-hover/btn:border-white/50 transition-all duration-300 shadow-[0_0_30px_rgba(139,92,246,0.5)]">
+                      <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* Bottom bar */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                      <span className="text-white/90 text-xs font-semibold tracking-wide">
+                        Sannan Renderz — Showreel 2024
+                      </span>
+                    </div>
+                    <svg className="w-4 h-4 text-white/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                    </svg>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
