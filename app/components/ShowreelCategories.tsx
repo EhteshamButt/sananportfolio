@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const DRIVE_ID = "1t5xpYEt7mvOGQ6FUXJJcxEYsONjOzra3";
 const EMBED_URL = `https://drive.google.com/file/d/${DRIVE_ID}/preview`;
@@ -85,6 +85,16 @@ function SectionHeader({ title }: { title: string }) {
 
 export default function ShowreelCategories() {
   const [playing, setPlaying] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      containerRef.current?.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  };
 
   return (
     <section id="showreel" className="py-10 bg-[#05050f]">
@@ -95,14 +105,36 @@ export default function ShowreelCategories() {
             <SectionHeader title="MY SHOWREEL" />
 
             {/* Video player */}
-            <div className="relative rounded-2xl overflow-hidden border border-[#1e1e3a] bg-[#0d0d1a] aspect-video group shadow-[0_0_40px_rgba(139,92,246,0.15)]">
+            <div
+              ref={containerRef}
+              className="relative rounded-2xl overflow-hidden border border-[#1e1e3a] bg-[#0d0d1a] aspect-video shadow-[0_0_40px_rgba(139,92,246,0.15)]"
+            >
               {playing ? (
-                <iframe
-                  src={`${EMBED_URL}?autoplay=1`}
-                  className="absolute inset-0 w-full h-full"
-                  allow="autoplay; fullscreen"
-                  allowFullScreen
-                />
+                <>
+                  {/* Spinner while iframe loads */}
+                  {!loaded && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#0d0d1a] z-10">
+                      <div className="w-10 h-10 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+                    </div>
+                  )}
+                  <iframe
+                    src={EMBED_URL}
+                    className="absolute inset-0 w-full h-full"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    onLoad={() => setLoaded(true)}
+                  />
+                  {/* Fullscreen button */}
+                  <button
+                    onClick={toggleFullscreen}
+                    className="absolute top-2 right-2 z-20 p-1.5 bg-black/60 hover:bg-black/80 rounded-lg transition-colors"
+                    aria-label="Toggle fullscreen"
+                  >
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                    </svg>
+                  </button>
+                </>
               ) : (
                 <>
                   {/* Thumbnail */}
@@ -125,7 +157,7 @@ export default function ShowreelCategories() {
                     className="absolute inset-0 flex items-center justify-center group/btn"
                     aria-label="Play showreel"
                   >
-                    <div className="w-18 h-18 w-16 h-16 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 flex items-center justify-center group-hover/btn:bg-white/25 group-hover/btn:scale-110 group-hover/btn:border-white/50 transition-all duration-300 shadow-[0_0_30px_rgba(139,92,246,0.5)]">
+                    <div className="w-16 h-16 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 flex items-center justify-center group-hover/btn:bg-white/25 group-hover/btn:scale-110 group-hover/btn:border-white/50 transition-all duration-300 shadow-[0_0_30px_rgba(139,92,246,0.5)]">
                       <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
@@ -140,9 +172,6 @@ export default function ShowreelCategories() {
                         Sannan Renderz — Showreel 2024
                       </span>
                     </div>
-                    <svg className="w-4 h-4 text-white/50 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                    </svg>
                   </div>
                 </>
               )}
